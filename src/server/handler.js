@@ -4,6 +4,7 @@ const crypto = require('crypto');
 async function postPredictHandler(request, h) {
   const { image } = request.payload;
   const { model } = request.server.app;
+ 
   const { confidenceScore, label, explanation, suggestion } = await predictClassification(model, image);
   const id = crypto.randomUUID();
   const createdAt = new Date().toISOString();
